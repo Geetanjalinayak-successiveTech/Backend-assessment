@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import { DBConnect } from "./config/ConnectDb";
 import { app } from "./app";
 

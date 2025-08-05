@@ -25,3 +25,7 @@ export const getStudent = async()=>{
     return await studentModel.find();
 }
 
+export const findStudentByEmail= async(email:string)=>{
+    return await studentModel.findOne({email});
+}
+

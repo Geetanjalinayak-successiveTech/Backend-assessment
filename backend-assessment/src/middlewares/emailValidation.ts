@@ -1,15 +1,20 @@
-import { Request,Response } from "express";
-import { findStudent } from "../services/Student.Service";
+import { NextFunction, Request, Response } from "express";
+import { findStudentByEmail } from "../services/Student.Service";
 
+export const emailVerfication = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const email = req.body.email;
+    const existingEmail = await findStudentByEmail(email);
 
-export const emailVerfication = (req:Request,res:Response)=>{
-    try {
-        const data= findStudent(req.body.id);
-        const existingEmail= (req as any).user.email;
-
-        
-        
-    } catch (error) {
-        
+    if (existingEmail) {
+      return res.status(400).json({ message: "Email already exist" });
     }
-}
+    next();
+  } catch (error) {
+    next(error);
+  }
+};
