@@ -6,7 +6,7 @@ export const registerStudent= async(req:Request,res:Response)=>{
     try {
          
 
-    const existingData= await findStudent(req.body.userId);
+    const existingData= await findStudent(req.body._id);
     if(existingData)
     {
         return res.status(400).json({message:"user already exist"})

@@ -3,6 +3,11 @@ dotenv.config();
 import { Request, Response, NextFunction } from "express";
 import Jwt from "jsonwebtoken";
 
+// interface AuthRequest extends Request{
+//   name:string,
+//   age:number,
+//   email:string
+// }
 export const authMiddleware =(
   req: Request,
   res: Response,

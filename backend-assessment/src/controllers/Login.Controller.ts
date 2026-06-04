@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 
 export const login = async (req: Request, res: Response) => {
   try {
-    const user = await findStudent(req.body.id);
+    const user = await findStudent(req.body._id);
     if (!user) {
       return res.status(400).json({ message: "user not exist" });
     }
